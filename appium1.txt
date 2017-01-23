@@ -1,0 +1,4 @@
+[caps]
+platformName = "android"
+deviceName = "GalaxyNexus19"
+app = "apps/Calculator.apk"

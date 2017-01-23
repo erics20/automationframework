@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+gem 'cucumber'
+gem 'fire_poll'
+gem 'require_all'
+gem 'faker'
+gem 'activesupport'
+gem 'page-object'
+gem 'appium_console'
+gem 'selenium-cucumber'
+gem 'selenium-webdriver'
