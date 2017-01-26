@@ -31,6 +31,10 @@ class GenericEmulator
     element.send_keys text
   end
 
+  def get_element_text(element)
+    element.text
+  end
+
   # Function Graveyard
 
   # def move_to_element(element, start_x = 0, start_y = 0)

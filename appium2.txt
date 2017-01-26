@@ -1,0 +1,5 @@
+[caps]
+platformName = 'ios'
+deviceName = 'iPhone SE'
+automationName = 'XCUITest'
+app = "apps/UICatalog-iphonesimulator.app"

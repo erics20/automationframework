@@ -23,7 +23,9 @@ $app_path = ENV['APP_PATH']
 $automationName = ENV['AUTOMATION_NAME']
 
 $iOSudid = ENV['iOSUDID'] || 'DE69323E-19A4-4D82-85C5-81E728A782C0' #iPhone SE
-$udid = ENV['UDID'] || $iOSudid
+if $platform == 'iOS'
+  $udid = ENV['UDID'] || $iOSudid
+end
 
 #iOS command line launch ENVs
 $path_to_sim = ENV['PATH_TO_SIM'] || '/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator'
@@ -36,11 +38,17 @@ puts "Setting up automation environment..."
 
 #Add "device name" inside of the android command line
 if $platform == 'android'
+  if `adb shell getprop init.svc.bootanim 2>&1&`.strip == 'stopped'
+    system 'adb -e emu kill'
+  end
   system 'nohup emulator -avd GalaxyNexus19 > features/debug/android_logs/$(date +%Y%m%d-%H%M).txt 2>&1&'
   sleep(10)
        FirePoll.poll("waited too long", 80) do
-         system 'adb shell getprop init.svc.bootanim 2>&1&emulator_log.txt'.strip
-  end
+         emulator_on = `adb shell getprop init.svc.bootanim 2>&1&`.strip #`adb shell getprop init.svc.bootanim > features/debug/android_logs/load_emulator/$(date +%Y%m%d-%H%M).txt 2>&1&`.strip
+         if emulator_on == "stopped"
+           true
+         end
+       end
 end
 
 if $platform == 'iOS'
