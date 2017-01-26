@@ -43,6 +43,9 @@ end
 at_exit do
   # Kill appium
   $driver.quit
+  if `ps -A | grep -m1 appium | awk '{print $1}'`
+    system "kill -9 `ps -A | grep -m1 appium | awk '{print $1}'`"
+  end
   # Kill simulators or drivers
   case $platform
     when "android"

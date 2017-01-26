@@ -1,4 +1,5 @@
 class SearchBarsVars
+  include SharedFunctions
 
   def initialize
     @search_bars    = $driver.find_element(:name => 'Search Bars')
@@ -6,13 +7,5 @@ class SearchBarsVars
     @custom         = $driver.find_element(:name => 'Custom')
 
     create_getters
-  end
-
-  def create_getters
-    instance_variables.each do |v|
-      define_singleton_method(v.to_s.tr('@','')) do
-        instance_variable_get(v)
-      end
-    end
   end
 end
