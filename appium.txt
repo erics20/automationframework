@@ -1,4 +1,5 @@
 [caps]
-platformName = "android"
-deviceName = "GalaxyNexus19"
-app = "apps/Calculator.apk"
+platformName = 'ios'
+deviceName = 'iPhone SE'
+automationName = 'XCUITest'
+app = "apps/UICatalog-iphonesimulator.app"

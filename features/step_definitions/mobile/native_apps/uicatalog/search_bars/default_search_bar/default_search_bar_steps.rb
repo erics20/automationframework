@@ -10,6 +10,7 @@ end
 
 Then(/I should be able to type "([^"]*)" into the search bar$/) do |text|
   default = DefaultSearchBarVars.new
+  GenericEmulator.new.click(default.search_bar)
   GenericEmulator.new.send_keys(default.search_bar, text)
 end
 

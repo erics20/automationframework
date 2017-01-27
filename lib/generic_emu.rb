@@ -1,6 +1,7 @@
 class GenericEmulator
   include FirePoll
   include Appium::Common
+  include Appium
 
 
 
@@ -11,7 +12,7 @@ class GenericEmulator
   def move_to_element(element)
     if element.displayed? == false
       $driver.execute_script "mobile: scroll", :direction => 'down'
-      # move_to_element(element)
+      move_to_element(element)
     end
   end
 
@@ -34,6 +35,11 @@ class GenericEmulator
   def get_element_text(element)
     element.text
   end
+
+  # def iOS_send_keys(element)
+  #   action = Appium::TouchAction.new.tap(element)
+  #   action.perform
+  # end
 
   # Function Graveyard
 
@@ -62,17 +68,16 @@ class GenericEmulator
   #     expect(result).to be false
   #   end
   # end
-  #
-  # def long_press_on_element_default_duration(element)
+
+  # def mobile_action_click(element)
   #   puts element
   #   begin
-  #     ele_from = WAIT.until { element }.location
+  #     ele_from = WAIT.until {element}.location
   #     x = ele_from.x
   #     y = ele_from.y
   #
-  #     puts ele_from
   #
-  #     action = Appium::TouchAction.new.press(x: "#{x}", y: "#{y}").wait(2000).move_to(x: "#{x}", y:  "#{y}").release()
+  #     action = Appium::TouchAction.new.press(x: "#{x}", y: "#{y}").wait(500).release
   #     action.perform
   #   rescue Exception => e
   #     if e.to_s == 'The swipe did not complete successfully'
