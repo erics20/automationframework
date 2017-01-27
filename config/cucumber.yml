@@ -1,5 +1,5 @@
-default: --guess
+default: --guess <% common = "--tags ~@manual --format pretty --no-source" %>
 android_calculator: PLATFORM=android APP_PATH=/apps/Calculator.apk BROWSER=ff -t @android
-iOS_uicatalog: PLATFORM=iOS DEVICE_NAME="iPhone SE" AUTOMATION_NAME="XCUITest" APP_PATH=/apps/UICatalog-iphonesimulator.app  -t @iOS
+iOS_uicatalog: <%= common %> PLATFORM=iOS DEVICE_NAME="iPhone SE" AUTOMATION_NAME="XCUITest" APP_PATH=/apps/UICatalog-iphonesimulator.app  -t @iOS
 chrome_test: BROWSER=chrome -t @chrome
 windows7_chrome: PLATFORM=WINDOWS SELENIUM_BROWSER=chrome BS_AUTOMATE_OS='Windows' BS_AUTOMATE_OS_VERSION='7' BROWSER_VERSION='55.0' -t @windows
