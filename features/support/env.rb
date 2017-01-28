@@ -12,6 +12,7 @@ require 'active_support/all'
 require 'rspec'
 require 'selenium-webdriver'
 require 'nokogiri'
+require 'random_token'
 
 require_all 'lib'
 
@@ -102,7 +103,7 @@ case $platform
         Process.exit(0)
       end
   # local testing
-  when 'desktop'
+  when 'desktop' #desktop/chrome/firefox/safari
     begin
       $driver = Selenium::WebDriver.for(:"#{$browser_type}")
       $driver.manage().window().maximize()

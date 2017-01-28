@@ -1,7 +1,7 @@
 class GenericEmulator
   include FirePoll
   include Appium::Common
-  include Appium
+  include RandomToken
 
 
 

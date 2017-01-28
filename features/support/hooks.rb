@@ -43,6 +43,7 @@ end
 at_exit do
   # Kill appium
   $driver.quit
+
   if `ps -A | grep -m1 appium | awk '{print $1}'`
     system "kill -9 `ps -A | grep -m1 appium | awk '{print $1}'`"
   end
@@ -57,7 +58,5 @@ at_exit do
         system "xcrun simctl shutdown all"
         sleep(5)
       end
-    else
-      $driver.quit
   end
 end

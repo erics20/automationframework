@@ -1,4 +1,5 @@
 module SharedFunctions
+  include RandomToken
 
   def create_getters
     instance_variables.each do |v|
@@ -6,5 +7,10 @@ module SharedFunctions
         instance_variable_get(v)
       end
     end
+  end
+
+  def get_email
+    username = RandomToken.gen(15)
+    email = username + '@mailinator.com'
   end
 end
